@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Broken Tag</title>
+	<!-- 	<link type="text/css" rel="stylesheet" href="css/custom.css" /> -->
+
+</h:head>
+
+<h:body
+	style="font-family: 'Lucida Grande', 'Helvetica Neue', sans-serif; font-size: 13px;">
+
+
+	<div align="center" style="margin: 15px auto;">
+		<h:outputText style="font-size: 23px;"
+			value="Analise de Postagens no Twitter e Instagram" />
+	</div>
+
+	<h:form id="postForm">
+
+		<div>
+			<div style="width: 500px; float: left; padding: 75px;">
+
+				<p:dataList var="raking" value="#{searchView.brokenTotal.rakings}"
+					type="ordered" paginator="true" rows="10" styleClass="paginated">
+					<f:facet name="header">
+           		 Raking de Palvras
+       			 </f:facet>
+       			 #{raking.word}, #{raking.count}
+    		</p:dataList>
+
+			</div>
+
+			<div style="width: 500px; float: left; padding: 75px;">
+				<p:pieChart title="Qualidade das Postagens"
+					value="#{searchView.pieChartModel}" legendPosition="r" />
+			</div>
+		</div>
+	</h:form>
+
+	<h:form id="listForm">
+		<div style="padding: 50px; top: 300px; float: left;">
+
+			<p:dataTable id="msgs" var="tagBroken"
+				value="#{searchView.brokenTotal.tagBrokens}" rows="10"
+				paginator="true">
+
+				<f:facet name="header">
+           		 	Menssagem Retornadas da Pesquisa
+       			 </f:facet>
+
+				<p:column headerText="Rede Social">
+					<h:outputText value="#{tagBroken.integrationResponse.tipo}" />
+				</p:column>
+
+				<p:column headerText="Usuario">
+					<h:outputText value="#{tagBroken.integrationResponse.usuario}" />
+				</p:column>
+
+				<p:column headerText="Post" style="width:800px">
+					<h:outputText value="#{tagBroken.integrationResponse.msg}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</div>
+
+
+	</h:form>
+</h:body>
+</html>

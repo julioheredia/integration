@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Broken Tag</title>
+	<link type="text/css" rel="stylesheet" href="css/custom.css" />
+</h:head>
+<h:body>
+
+	<div style="height: 50px;"></div>
+	<div>
+
+		<div align="center" style="margin: 15px auto;">
+			<h:graphicImage value="images/broken.png" />
+		</div>
+
+		<h:form id="form">
+
+			<div align="center" style="margin: 15px auto;">
+				<h:outputText class="labelsearch"
+					value="Pesquisa nas Redes Sociais do Twitter e Instagram" />
+			</div>
+
+			<div align="center" style="margin: 15px auto;">
+				<table>
+					<tr>
+						<td><h:outputText value="Tipo de Tags: " /></td>
+						<td><h:selectOneRadio value="#{searchView.tipoResultado}"
+								required="true" styleClass="check">
+								<f:selectItem itemValue="todos" itemLabel="Todos" />
+								<f:selectItem itemValue="bons" itemLabel="Boas" />
+								<f:selectItem itemValue="ruins" itemLabel="Ruins" />
+							</h:selectOneRadio></td>
+					</tr>
+				</table>
+			</div>
+
+			<div align="center" style="margin: 15px auto;">
+				<h:inputText class="basic-grey" value="#{searchView.tag}" />
+
+				<h:outputText value="Iterações: " />
+				<h:inputText id="it" class="minInput" value="#{searchView.iteracao}">
+					<f:validateLongRange minimum="1" maximum="150" />
+				</h:inputText>
+
+			</div>
+
+			<div align="center" style="margin: 15px auto;">
+				<h:commandButton id="search" class="button" value="Pesquisar"
+					action="#{searchView.search}" />
+			</div>
+
+			<div align="center" style="margin: 15px auto;">
+				<h:message id="msg" for="search" />
+			</div>
+		</h:form>
+
+
+		<div align="center" style="margin: 15px auto;">
+			<h:graphicImage value="images/mini_instagram.png"
+				style="width: 100px;" />
+			<h:graphicImage value="images/mini_twitter.png"
+				style="width: 100px; " />
+		</div>
+
+	</div>
+</h:body>
+
+</html>
